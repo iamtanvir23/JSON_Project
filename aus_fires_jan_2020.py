@@ -5,11 +5,11 @@ from plotly.graph_objs import Scattergeo,Layout
 from plotly import offline
 
 #Open Fires Data File and Read
-file_2019_fires = open('MODIS_C6_Australia_NewZealand_MCD14DL_NRT_2020026.txt','r')
-data_2019_fires = csv.reader(file_2019_fires,delimiter=',')
+file_2020_fires = open('MODIS_C6_Australia_NewZealand_MCD14DL_NRT_2020026.txt','r')
+data_2020_fires = csv.reader(file_2020_fires,delimiter=',')
 
 #Get Row of Headers
-header_row = next(data_2019_fires)
+header_row = next(data_2020_fires)
 
 #Print Header Data Type
 #print(type(header_row))
@@ -22,7 +22,7 @@ header_row = next(data_2019_fires)
 brights = []
 lons = []
 lats = []
-for row in data_2019_fires:
+for row in data_2020_fires:
     lats.append(row[0])
     lons.append(row[1])
     brights.append(int(float(row[2]))) #for some reason doing just int() didn't work
