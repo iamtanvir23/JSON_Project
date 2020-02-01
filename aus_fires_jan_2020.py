@@ -1,3 +1,8 @@
+# Josh Jacobsen - MW 2:30pm
+# JSON_Project
+
+# - - - - Australian Fires - January 2020 - - - - 
+
 import plotly
 import json
 import csv

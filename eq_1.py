@@ -1,4 +1,8 @@
-#import plotly
+# Josh Jacobsen - MW 2:30pm
+# JSON_Project
+
+# - - - - Earthquakes Practice - - - - 
+
 import json
 
 in_file = open('eq_data_1_day_m1.json','r')
