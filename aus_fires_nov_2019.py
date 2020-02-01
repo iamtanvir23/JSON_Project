@@ -1,27 +1,12 @@
-#import plotly
+
 import json
 import csv
 
-# in_file = open('eq_data_1_day_m1.json','r')
-# outfile = open('readable_eq_data.json','w')
 
 file_2019_fires = open('MODIS_C6_Australia_NewZealand_MCD14DL_NRT_2019331.txt','r')
 data_2019_fires = csv.reader(file_2019_fires,delimiter=',')
 
-# # Load as Dictionary
-# eq_data = json.load(in_file)
 
-# # Print Type
-# print(type(eq_data))
-
-# # Dump File Contents in a Readable Way
-# json.dump(eq_data,outfile,indent=4)
-
-# # List of Earthquakes
-# list_of_eqs = eq_data['features']
-
-# print(type(list_of_eqs))
-# print(len(list_of_eqs))
 
 header_row = next(data_2019_fires)
 
@@ -47,7 +32,7 @@ print(brights[:10])
 print(lons[:10])
 print(lats[:10])
 
-# import plotly
+import plotly
 from plotly.graph_objs import Scattergeo,Layout
 from plotly import offline
 
@@ -56,35 +41,26 @@ scl = [0,"rgb(150,0,90)"],[0.125,"rgb(0, 0, 200)"],[0.25,"rgb(0, 25, 255)"],\
 [0.75,"rgb(255, 234, 0)"],[0.875,"rgb(255, 111, 0)"],[1,"rgb(255, 0, 0)"]
 
 data = [Scattergeo(
-       #locationmode = "USA-states",
         lon=lons,
         lat=lats,
         marker = dict(
             color = brights,
-            #colorscale = scl,
-            colorscale = 'YlGnBu',
-            #reversescale = True,
-            #opacity = 0.7,
-            size = 10,
+            colorscale = 'Viridis',
+            reversescale = True,
+            line=dict(width=1,color='White'),
+            size = 12,
             colorbar = dict(
-                titleside = "right",
-                #outlinecolor = "rgba(68, 68, 68, 0)",
-                #ticks = "outside",
-                #showticksuffix = "last",
-                #dtick = 0.1
+                titleside = "top",
+                title='Brightness'
                 )
             )
     )]
 
-
 my_layout = Layout(title="November 2019 Australia Fires",geo = dict(
             fitbounds="locations",            
             showland = True,
-            landcolor = "rgb(250, 250, 250)",
-            subunitcolor = "rgb(217, 217, 217)",
-            countrycolor = "rgb(217, 217, 217)",
-            countrywidth = 0.5,
-            subunitwidth = 0.5
+            landcolor = "rgb(229, 236, 246)",
+
         ))
 fig = {'data':data, 'layout':my_layout}
 
