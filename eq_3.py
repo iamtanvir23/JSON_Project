@@ -5,7 +5,7 @@
 
 import json
 
-in_file = open('eq_data_1_day_m1.json','r')
+in_file = open('eq_data_30_day_m1.json','r')
 outfile = open('readable_eq_data.json','w')
 
 # Load as Dictionary
@@ -27,7 +27,7 @@ print(len(list_of_eqs))
 mags = []
 lons = []
 lats = []
-
+hover_texts = []
 
 # List Magnitude of Each Earthquake
 for eq in list_of_eqs:
@@ -39,6 +39,9 @@ for eq in list_of_eqs:
     lons.append(lon)
     lats.append(lat)
 
+    title = eq['properties']['title']
+    hover_texts.append(title)
+
 # Print Magnitude of First 10 Values
 print(mags[:10])
 print(lons[:10])
@@ -47,7 +50,20 @@ print(lats[:10])
 from plotly.graph_objs import Scattergeo,Layout
 from plotly import offline
 
-data = [Scattergeo(lon=lons,lat=lats)]
+# data = [Scattergeo(lon=lons,lat=lats)]
+
+data = [{'type': 'scattergeo',
+        'lon': lons,
+        'lat': lats,
+        'text': hover_texts,
+        'marker':{
+            'size':[5*mag for mag in mags],
+            'color': mags,
+            'colorscale': 'Viridis',
+            'reversescale': True,
+            'colorbar': {'title':'Magnitude'}
+            }
+        }]
 
 my_layout = Layout(title="Global Earthquakes")
 fig = {'data':data, 'layout':my_layout}
