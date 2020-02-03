@@ -21,6 +21,8 @@ The reports displays information about the latitude and longitude, and the brigh
 aus_fires_jan_2020.py - Jan. 26, 2020 Program
 aus_fires_nov_2019.py - Nov. 27, 2019 Program
 eq_1.py - Earthquakes Practice Program from Class
+eq_2.py - Earthquakes Practice Program from Class with Marker Sizes
+eq_1.py - Earthquakes Practice Program from Class with Hover Text
 
 ~ Reports ~
 Australian Fires - January 2020.html - Jan. 26, 2020 Report
